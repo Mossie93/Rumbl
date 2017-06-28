@@ -12,4 +12,6 @@ defmodule Rumbl.Repo do
       %Rumbl.User{id: 3, name: "Gosia", username: "Gosian", password: "password789"}
     ]
   end
+
+  def all(_module), do: []
 end
