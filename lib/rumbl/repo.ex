@@ -2,9 +2,7 @@ defmodule Rumbl.Repo do
   @moduledoc """
   In-memory repository
   """
-
-  use Ecto.Repo, otp_app: :rumbl
-
+  
   def all(Rumbl.User) do
     [
       %Rumbl.User{id: 1, name: "Dosia", username: "Dosian", password: "password123"},
