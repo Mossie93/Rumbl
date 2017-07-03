@@ -6,7 +6,7 @@ defmodule Rumbl.SessionController do
   end
 
   def create(conn, %{"session" => %{"username" => user, "password" => pass}}) do
-    case RumblAuth.login_by_username_and_pass(conn, user, pass, repo: Repo) do
+    case Rumbl.Auth.login_by_username_and_pass(conn, user, pass, repo: Repo) do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Welcome back!")
