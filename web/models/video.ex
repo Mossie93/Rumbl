@@ -3,7 +3,7 @@ defmodule Rumbl.Video do
 
   schema "videos" do
     field :url, :string
-    field :titile, :string
+    field :title, :string
     field :description, :string
     belongs_to :user, Rumbl.User
 
@@ -15,7 +15,7 @@ defmodule Rumbl.Video do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:url, :titile, :description])
-    |> validate_required([:url, :titile, :description])
+    |> cast(params, [:url, :title, :description])
+    |> validate_required([:url, :title, :description])
   end
 end

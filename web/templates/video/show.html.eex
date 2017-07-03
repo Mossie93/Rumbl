@@ -13,8 +13,8 @@
   </li>
 
   <li>
-    <strong>Titile:</strong>
-    <%= @video.titile %>
+    <strong>title:</strong>
+    <%= @video.title %>
   </li>
 
   <li>
