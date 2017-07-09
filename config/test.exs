@@ -9,6 +9,11 @@ config :rumbl, Rumbl.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
+# Use low number of hashing rounds in tests to speed up users seeding
+config :comeonin,
+  bcrypt_log_rounds: 4,
+  bpkdf2_rounds: 1
+
 # Configure your database
 config :rumbl, Rumbl.Repo,
   adapter: Ecto.Adapters.Postgres,
