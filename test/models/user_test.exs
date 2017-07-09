@@ -20,4 +20,11 @@ defmodule Rumbl.UserTest do
     assert {:username, {"should be at most %{count} character(s)", [count: 20]}} in
       errors_on(%User{}, attrs)
   end
+
+  test "registration_changeset password must be at leats 6 characters long" do
+    attrs = Map.put(@valid_attrs, :password, "12345")
+    changeset = User.registration_changeset(%User{}, attrs)
+
+    assert {:password, {"Should be at least %{count} character(s)", count: 6}} in changeset.errors
+  end
 end
