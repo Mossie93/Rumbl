@@ -17,8 +17,24 @@ defmodule Rumbl.Video do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:url, :title, :description, :category_id, :user_id])
+    |> cast(params, [:url, :title, :description, :category_id, :user_id, :slug])
     |> validate_required([:url, :title, :description])
     |> assoc_constraint(:category)
+    |> slugify_title()
+  end
+
+  defp slugify_title(changeset) do
+    if title = get_change(changeset, :title) do
+      put_change(changeset, :slug, slugify(title))
+    else
+      changeset
+    end
+  end
+
+  defp slugify(str) do
+    str
+    |> String.downcase()
+    |> String.replace(~r/[^\w-]+/u, "-")
+  end
   end
 end
