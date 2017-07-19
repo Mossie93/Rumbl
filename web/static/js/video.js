@@ -32,6 +32,13 @@ let Video = {
     vidChannel.join()
       .receive("ok", resp => { console.log("joined the video channel", resp) })
       .receive("error", reason => { console.log("failed to join a video channel", reason) })
+  },
+
+  esc(str) {
+    let div = document.createElement("div")
+    div.appendChild(document.createTextNode(str))
+    return div.innerHTML
+  },
   }
 }
 export default Video
