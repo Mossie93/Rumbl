@@ -25,6 +25,10 @@ let Video = {
       msgInput.value = ""
     })
 
+    vidChannel.on("new_annotation", (resp) => {
+      this.renderAnnotation(msgContainer, resp)
+    })
+
     vidChannel.join()
       .receive("ok", resp => { console.log("joined the video channel", resp) })
       .receive("error", reason => { console.log("failed to join a video channel", reason) })
