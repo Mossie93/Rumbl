@@ -18,6 +18,13 @@ let Video = {
     let postButton = document.getElementById("msg-submit")
     let vidChannel = socket.channel("videos:" + videoId)
 
+    postButton.addEventListener("click", e => {
+      let payload = { body: msgInput.value, at: Player.getCurrentTime() }
+      vidChannel.push("new_annotation", payload)
+        .receive("error", e => console.log(e))
+      msgInput.value = ""
+    })
+
     vidChannel.join()
       .receive("ok", resp => { console.log("joined the video channel", resp) })
       .receive("error", reason => { console.log("failed to join a video channel", reason) })
