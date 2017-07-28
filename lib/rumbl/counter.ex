@@ -20,6 +20,8 @@ defmodule Rumbl.Counter do
 
   def handle_call(:val, _from, val), do: {:reply, val, val}
 
+  def handle_info(:tick, val) when val <=0, do: raise "boom!"
+
   def handle_info(:tick, val) do
     IO.puts "tick #{val}"
     Process.send_after(self, :tick, 1000)
